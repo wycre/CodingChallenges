@@ -1,31 +1,33 @@
 ﻿namespace CodingPractice1;
 
+// Define a delegate
+public delegate void MyEventHandler(string message);
+
 class Program
 {
-    
-    // Declare delegate type
-    public delegate int Calculation(int a, int b);
-        
-    // Methods that match the delegate signature
-    public static int Add(int a, int b)
-    {
-        Console.WriteLine(a + b);
-        return a + b;
-    }
-
-    public static int Multiply(int a, int b)
-    {
-        Console.WriteLine(a * b);
-        return a * b;
-    }
+    // Declare event using delegate
+    public static event MyEventHandler MyEvent;
     
     static void Main(string[] args)
     {
-        // Instantiate the delgate and point it to add and multiply
-        Calculation calc = Add;
+        // Subscribe to the event with a handler method
+        MyEvent = EventHanlderMethod;
 
-        calc += Multiply;
+        // Raise the event by invoking it
+        OnMyEvent("This is the event");
 
-        calc(2, 3);
+        // Unsubscribe from the event if necessary
+        MyEvent -= EventHanlderMethod;
+    }
+
+    static void EventHanlderMethod(string message)
+    {
+        Console.WriteLine("Event Received: " + message);
+    }
+    
+    // this method raises the event
+    static void OnMyEvent(string message)
+    {
+        MyEvent?.Invoke(message);
     }
 }
