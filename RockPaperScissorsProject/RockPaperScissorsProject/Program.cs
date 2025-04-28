@@ -12,13 +12,18 @@ namespace RockPaperScissorsProject
         static void Main()
         {
 
-            // make game manager instance
-            gameManager = new GameManager();
+            
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainWindow());
+
+            MainWindow window = new MainWindow();
+            // make game manager instance
+            gameManager = new GameManager(window);
+
+            Application.Run(window);
+
         }
     }
 }
