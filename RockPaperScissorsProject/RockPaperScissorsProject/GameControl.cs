@@ -66,29 +66,33 @@ namespace RockPaperScissorsProject
         {
             // Generate random play from computer
             Random random = new Random();
-            PlayChoices compChoice = (PlayChoices) random.Next(3);
+            PlayChoices compChoice = (PlayChoices)random.Next(3);
             oppChoiceText.Text = compChoice.ToString();
 
             GameManager.Outcome playerOutcome = RoundAdjudicator(choice, compChoice);
+
+            bool gameOver = Program.gameManager.RegisterOutcome(playerOutcome);
 
             winStatusLabel.Show();
             if (playerOutcome == GameManager.Outcome.Win)
             {
                 winStatusLabel.Text = "You Won This Round";
                 ChangeLabelColor(winStatusLabel, Color.Green);
+                playerScoreLabel.Text = Program.gameManager.PlayerWinCount.ToString();
             }
             else if (playerOutcome == GameManager.Outcome.Lose)
             {
                 winStatusLabel.Text = "You Lost This Round";
                 ChangeLabelColor(winStatusLabel, Color.Red);
+                opponentScoreLabel.Text = Program.gameManager.OpponentWinCount.ToString();
             }
             else if (playerOutcome == GameManager.Outcome.Tie)
             {
                 winStatusLabel.Text = "You Tied This Round";
                 ChangeLabelColor(winStatusLabel, Color.Black);
-            } 
-            
-            bool gameOver = Program.gameManager.RegisterOutcome(playerOutcome);
+            }
+
+
             if (gameOver)
             {
                 EndGame();
@@ -101,6 +105,22 @@ namespace RockPaperScissorsProject
             rockButton.Enabled = false;
             paperButton.Enabled = false;
             Scissors.Enabled = false;
+
+            if (Program.gameManager.PlayerIsWinner == true)
+            {
+                winStatusLabel.Text = "You Won This Match";
+                ChangeLabelColor(winStatusLabel, Color.Green);
+            }
+            else
+            {
+                winStatusLabel.Text = "You Lost This Match";
+                ChangeLabelColor(winStatusLabel, Color.Red);
+            }
+
+            returnButton.Visible = true;
+            returnButton.Enabled = true;
+
+            Program.gameManager.ResetGame();
         }
 
         private void rockButton_Click(object sender, EventArgs e)
@@ -116,6 +136,23 @@ namespace RockPaperScissorsProject
         private void Scissors_Click(object sender, EventArgs e)
         {
             PlayTurn(PlayChoices.Scissors);
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            rockButton.Enabled = true;
+            paperButton.Enabled = true;
+            Scissors.Enabled = true;
+
+            winStatusLabel.Visible = false;
+            returnButton.Visible = false;
+
+            oppChoiceText.Text = "Waiting for play";
+
+            playerScoreLabel.Text = "0";
+            opponentScoreLabel.Text = "0";
+
+            Program.gameManager.DeactivateGame();
         }
     }
 }

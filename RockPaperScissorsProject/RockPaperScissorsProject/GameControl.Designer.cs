@@ -35,6 +35,11 @@
             label2 = new Label();
             oppChoiceText = new Label();
             winStatusLabel = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            playerScoreLabel = new Label();
+            opponentScoreLabel = new Label();
+            returnButton = new Button();
             SuspendLayout();
             // 
             // rockButton
@@ -84,11 +89,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20F);
-            label2.Location = new Point(50, 24);
+            label2.Location = new Point(208, 57);
             label2.Name = "label2";
-            label2.Size = new Size(249, 37);
+            label2.Size = new Size(243, 37);
             label2.TabIndex = 13;
-            label2.Text = "Opponent's Choice:";
+            label2.Text = "Opponent's Choice";
             // 
             // oppChoiceText
             // 
@@ -114,10 +119,69 @@
             winStatusLabel.TextAlign = ContentAlignment.MiddleCenter;
             winStatusLabel.Visible = false;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(50, 101);
+            label3.Name = "label3";
+            label3.Size = new Size(85, 21);
+            label3.TabIndex = 16;
+            label3.Text = "Your Score";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(482, 101);
+            label4.Name = "label4";
+            label4.Size = new Size(123, 21);
+            label4.TabIndex = 17;
+            label4.Text = "Opponent Score";
+            // 
+            // playerScoreLabel
+            // 
+            playerScoreLabel.AutoSize = true;
+            playerScoreLabel.Font = new Font("Segoe UI", 12F);
+            playerScoreLabel.Location = new Point(87, 122);
+            playerScoreLabel.Name = "playerScoreLabel";
+            playerScoreLabel.Size = new Size(19, 21);
+            playerScoreLabel.TabIndex = 18;
+            playerScoreLabel.Text = "0";
+            playerScoreLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // opponentScoreLabel
+            // 
+            opponentScoreLabel.AutoSize = true;
+            opponentScoreLabel.Font = new Font("Segoe UI", 12F);
+            opponentScoreLabel.Location = new Point(533, 122);
+            opponentScoreLabel.Name = "opponentScoreLabel";
+            opponentScoreLabel.Size = new Size(19, 21);
+            opponentScoreLabel.TabIndex = 19;
+            opponentScoreLabel.Text = "0";
+            opponentScoreLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // returnButton
+            // 
+            returnButton.Font = new Font("Segoe UI", 12F);
+            returnButton.Location = new Point(279, 231);
+            returnButton.Name = "returnButton";
+            returnButton.Size = new Size(101, 35);
+            returnButton.TabIndex = 20;
+            returnButton.Text = "Return";
+            returnButton.UseVisualStyleBackColor = true;
+            returnButton.Visible = false;
+            returnButton.Click += returnButton_Click;
+            // 
             // GameControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(returnButton);
+            Controls.Add(opponentScoreLabel);
+            Controls.Add(playerScoreLabel);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(winStatusLabel);
             Controls.Add(oppChoiceText);
             Controls.Add(label2);
@@ -141,5 +205,10 @@
         private Label label2;
         private Label oppChoiceText;
         private Label winStatusLabel;
+        private Label label3;
+        private Label label4;
+        private Label playerScoreLabel;
+        private Label opponentScoreLabel;
+        private Button returnButton;
     }
 }

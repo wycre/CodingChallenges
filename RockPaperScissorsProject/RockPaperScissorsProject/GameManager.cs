@@ -44,6 +44,9 @@ namespace RockPaperScissorsProject
 
         #region Properties
 
+        public int PlayerWinCount { get { return playerWins; } }
+        public int OpponentWinCount { get { return opponentWins; } }
+
         public RoundChoices RoundType 
         {   get 
             { return roundChoice; } 
@@ -78,6 +81,19 @@ namespace RockPaperScissorsProject
             mainWindow.Controls["gameControl1"]?.Show();
         }
 
+        public void DeactivateGame()
+        {
+            mainWindow.Controls["gameControl1"]?.Hide();
+            mainWindow.Controls["gameSetup1"]?.Show();
+        }
+
+        public void ResetGame()
+        {
+            playerWins = 0;
+            opponentWins = 0;
+            playerIsWinner = null;
+        }
+
         /// <summary>
         /// Registers a round outcome with the game manager
         /// </summary>
@@ -88,11 +104,11 @@ namespace RockPaperScissorsProject
             // Increment the win counter
             if (playerOutcome == Outcome.Win)
             {
-                playerWins++;
+                playerWins += 1;
             }
             else if (playerOutcome == Outcome.Lose)
             {
-                opponentWins++;
+                opponentWins += 1;
             }
 
             // Determine if the game should end
