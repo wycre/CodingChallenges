@@ -11,24 +11,6 @@ namespace RockPaperScissorsProject
     /// </summary>
     internal class GameManager
     {
-        #region Static Members
-        public enum RoundChoices
-        {
-            BestOfOne,
-            BestOfThree,
-            BestOfFive
-        }
-
-        public enum Outcome
-        {
-            Win,
-            Lose,
-            Tie
-        }
-
-        #endregion
-
-
         #region Fields
 
         private MainWindow mainWindow;
@@ -54,8 +36,8 @@ namespace RockPaperScissorsProject
             { 
                 roundChoice = value;
                 if (roundChoice == RoundChoices.BestOfOne) maxWins = 1;
-                if (roundChoice == RoundChoices.BestOfThree) maxWins = 3;
-                if (roundChoice == RoundChoices.BestOfFive) maxWins = 5;
+                if (roundChoice == RoundChoices.BestOfThree) maxWins = 2;
+                if (roundChoice == RoundChoices.BestOfFive) maxWins = 3;
             } 
         }
 

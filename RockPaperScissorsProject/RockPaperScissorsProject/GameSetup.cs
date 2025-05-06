@@ -29,7 +29,7 @@ namespace RockPaperScissorsProject
                 bestOfFiveButton.Enabled = true;
             }
             bestOfOneButton.Enabled = false;
-            Program.gameManager.RoundType = GameManager.RoundChoices.BestOfOne;
+            Program.gameManager.RoundType = RoundChoices.BestOfOne;
         }
 
         private void bestOfThreeButton_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace RockPaperScissorsProject
                 bestOfFiveButton.Enabled = true;
             }
             bestOfThreeButton.Enabled = false;
-            Program.gameManager.RoundType = GameManager.RoundChoices.BestOfThree;
+            Program.gameManager.RoundType = RoundChoices.BestOfThree;
         }
 
         private void bestOfFiveButton_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace RockPaperScissorsProject
                 bestOfThreeButton.Enabled = true;
             }
             bestOfFiveButton.Enabled = false;
-            Program.gameManager.RoundType = GameManager.RoundChoices.BestOfFive;
+            Program.gameManager.RoundType = RoundChoices.BestOfFive;
         }
 
         // New window to show game

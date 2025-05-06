@@ -41,25 +41,25 @@ namespace RockPaperScissorsProject
             }
         }
 
-        private GameManager.Outcome RoundAdjudicator(PlayChoices playerChoice, PlayChoices opponentChoice)
+        private Outcome RoundAdjudicator(PlayChoices playerChoice, PlayChoices opponentChoice)
         {
             if (playerChoice == PlayChoices.Rock && opponentChoice == PlayChoices.Scissors)
             {
-                return GameManager.Outcome.Win;
+                return Outcome.Win;
             }
             else if (playerChoice == PlayChoices.Paper && opponentChoice == PlayChoices.Rock)
             {
-                return GameManager.Outcome.Win;
+                return Outcome.Win;
             }
             else if (playerChoice == PlayChoices.Scissors && opponentChoice == PlayChoices.Paper)
             {
-                return GameManager.Outcome.Win;
+                return Outcome.Win;
             }
             else if (playerChoice == opponentChoice)
             {
-                return GameManager.Outcome.Tie;
+                return Outcome.Tie;
             }
-            else return GameManager.Outcome.Lose;
+            else return Outcome.Lose;
         }
 
         private void PlayTurn(PlayChoices choice)
@@ -69,24 +69,24 @@ namespace RockPaperScissorsProject
             PlayChoices compChoice = (PlayChoices)random.Next(3);
             oppChoiceText.Text = compChoice.ToString();
 
-            GameManager.Outcome playerOutcome = RoundAdjudicator(choice, compChoice);
+            Outcome playerOutcome = RoundAdjudicator(choice, compChoice);
 
             bool gameOver = Program.gameManager.RegisterOutcome(playerOutcome);
 
             winStatusLabel.Show();
-            if (playerOutcome == GameManager.Outcome.Win)
+            if (playerOutcome == Outcome.Win)
             {
                 winStatusLabel.Text = "You Won This Round";
                 ChangeLabelColor(winStatusLabel, Color.Green);
                 playerScoreLabel.Text = Program.gameManager.PlayerWinCount.ToString();
             }
-            else if (playerOutcome == GameManager.Outcome.Lose)
+            else if (playerOutcome == Outcome.Lose)
             {
                 winStatusLabel.Text = "You Lost This Round";
                 ChangeLabelColor(winStatusLabel, Color.Red);
                 opponentScoreLabel.Text = Program.gameManager.OpponentWinCount.ToString();
             }
-            else if (playerOutcome == GameManager.Outcome.Tie)
+            else if (playerOutcome == Outcome.Tie)
             {
                 winStatusLabel.Text = "You Tied This Round";
                 ChangeLabelColor(winStatusLabel, Color.Black);
